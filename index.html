@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Language App</title>
+    <link rel="stylesheet" href="languageapp.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-container">
+          <img src="./img/yla-logo.svg" alt="" />
+        </div>
+        <div class="links-container">
+          <ul>
+            <li><a id="language-chooser">Languages</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="front-page">
+          <h2>Welcome to Your Language App</h2>
+          <div class="p-container">
+            <p>
+              Expand your vocabulary today with this easy-to-use language
+              learning app!
+            </p>
+            <p>Press the button below to choose language!</p>
+          </div>
+          <button class="front-btn">Choose language</button>
+        </div>
+        <div class="back-page">
+          <div class="language-choose"></div>
+        </div>
+        <div class="lang-container">
+          <span class="guidance"></span>
+          <i class="fas fa-exchange-alt fa-2x reverse"></i>
+          <span class="target"></span>
+        </div>
+        <div class="points-container">
+          <span class="points"></span>
+          <span class="per">/ </span><span class="total-points"></span>
+        </div>
+        <div class="card-container">
+          <span class="asking"></span>
+          <span class="answer"></span>
+          <div class="container">
+            <input
+              type="text"
+              class="input-area"
+              id="input"
+              autocomplete="off"
+              value=""
+            />
+            <i class="fas fa-arrow-circle-right fa-2x submit"></i>
+          </div>
+          <i class="fas fa-chevron-right right fa-2x"></i>
+          <i class="fas fa-chevron-left left fa-2x"></i>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/a0bd14069a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="languageapp.js"></script>
+  </body>
+</html>
