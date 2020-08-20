@@ -46,6 +46,7 @@ const frontBtn = document.querySelector(".front-btn");
 const frontPage = document.querySelector(".front-page");
 const langContainer = document.querySelector(".lang-container");
 const languageChooser = document.querySelector("#language-chooser");
+const per = document.querySelector(".per");
 let numberOfItems = words.length;
 let currentItem;
 let previousRandomNumber;
@@ -191,7 +192,7 @@ frontBtn.addEventListener("click", function () {
           <button class="btn" id="long-btn">To the flashcards!</button>
           <p class="p-container" id="margin-bottom">You can always modify your choice of languages in our menu on the top of the page</p>`;
           const toTheFlashCards = document.querySelector("#long-btn");
-          const per = document.querySelector(".per");
+
           toTheFlashCards.addEventListener("click", function () {
             frontPage.style.visibility = "hidden";
             let randomNumber = Math.floor(Math.random() * numberOfItems);
@@ -238,3 +239,95 @@ reverseIcon.addEventListener("click", function () {
   const targetContainer = document.querySelector(".target");
   targetContainer.innerHTML = `<img src="./img/flags/${targetLanguage}-flag.svg">`;
 });
+
+const selectTarget = document.querySelector("#selectTarget");
+const selectOriginal = document.querySelector("#selectOriginal");
+const againLanguageChooser = document.querySelector(".again-lang");
+
+languageChooser.addEventListener("click", () => {
+  againLanguageChooser.classList.toggle("again-visible");
+  selectTarget.innerHTML = displayLanguages(availableLanguages, "target");
+  selectOriginal.innerHTML = displayLanguages(availableLanguages, "original");
+  actualTargets = document.querySelectorAll(".target");
+  actualOriginals = document.querySelectorAll(".original");
+  actualTargets.forEach((btn) => {
+    let freeBtns = Array.from(actualTargets).filter(function (good_btn) {
+      return good_btn !== btn;
+    });
+    btn.addEventListener("click", (e) => {
+      btn.classList.add("selected");
+      freeBtns.forEach((btn2) => {
+        btn2.classList.remove("selected");
+      });
+      actualTargets.forEach((btn) => {
+        if (
+          btn.classList.contains("selected") &&
+          btn.classList.contains("target")
+        ) {
+          targetLanguage = btn.dataset.id;
+          console.log(targetLanguage);
+        }
+      });
+    });
+  });
+  actualOriginals.forEach((btn) => {
+    let freeBtns = Array.from(actualOriginals).filter(function (good_btn) {
+      return good_btn !== btn;
+    });
+    btn.addEventListener("click", (e) => {
+      btn.classList.add("selected");
+      freeBtns.forEach((btn2) => {
+        btn2.classList.remove("selected");
+      });
+      actualOriginals.forEach((btn) => {
+        if (
+          btn.classList.contains("selected") &&
+          btn.classList.contains("original")
+        ) {
+          originalLanguage = btn.dataset.id;
+          console.log(originalLanguage);
+        }
+      });
+    });
+  });
+
+  const startBtn = document.querySelector("#start");
+  startBtn.addEventListener("click", () => {
+    againLanguageChooser.classList.remove("again-visible");
+    frontPage.style.visibility = "hidden";
+    let randomNumber = Math.floor(Math.random() * numberOfItems);
+    asking.innerHTML = words[randomNumber][targetLanguage];
+    currentItem = words[randomNumber];
+    cardContainer.style.visibility = "visible";
+    per.style.visibility = "visible";
+    langContainer.style.visibility = "visible";
+    cardContainer.classList.add("cont-fade-in");
+    previousRandomNumber = randomNumber;
+    points.innerHTML = "0";
+    totalPoints.innerHTML = "0";
+    numberPoints = 0;
+    numberTotalPoints = 0;
+    answer.innerHTML = "";
+    inputArea.value = "";
+    inputArea.classList.remove("bad");
+    inputArea.classList.remove("good");
+    answer.classList.remove("shake", "fadein");
+    inputArea.disabled = false;
+    right.disabled = false;
+    cardContainer.classList.remove("cont-fade-in");
+    cardContainer.classList.add("flip");
+    const guidanceContainer = document.querySelector(".guidance");
+    guidanceContainer.innerHTML = `<img src="./img/flags/${originalLanguage}-flag.svg">`;
+    const targetContainer = document.querySelector(".target");
+    targetContainer.innerHTML = `<img src="./img/flags/${targetLanguage}-flag.svg">`;
+  });
+});
+
+function displayLanguages(languages, attribute) {
+  let langSelect = languages.map(
+    (item) =>
+      `<button class="right-lang ${attribute}" data-id="${item}">${item}</button>`
+  );
+  langSelect = langSelect.join("");
+  return langSelect;
+}

@@ -1,0 +1,11 @@
+@mixin flexCenter($justifyContent) {
+  display: flex;
+  align-items: center;
+  justify-content: $justifyContent;
+}
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

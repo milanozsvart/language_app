@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Language App</title>
-    <link rel="stylesheet" href="languageapp.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow&display=swap"
       rel="stylesheet"
@@ -18,9 +18,7 @@
         </div>
         <div class="links-container">
           <ul>
-            <li><a id="language-chooser">Languages</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
+            <li><button id="language-chooser">Languages</button></li>
           </ul>
         </div>
       </nav>
@@ -37,9 +35,6 @@
             <p>Press the button below to choose language!</p>
           </div>
           <button class="front-btn">Choose language</button>
-        </div>
-        <div class="back-page">
-          <div class="language-choose"></div>
         </div>
         <div class="lang-container">
           <span class="guidance"></span>
@@ -65,6 +60,19 @@
           </div>
           <i class="fas fa-chevron-right right fa-2x"></i>
           <i class="fas fa-chevron-left left fa-2x"></i>
+        </div>
+        <div class="again-lang">
+          <div class="lang-align">
+            <div>
+              <span class="span">I want to learn...</span>
+              <div id="selectTarget"></div>
+            </div>
+            <div>
+              <span class="span">I speak...</span>
+              <div id="selectOriginal"></div>
+            </div>
+          </div>
+          <button id="start">Start</button>
         </div>
       </div>
     </main>
